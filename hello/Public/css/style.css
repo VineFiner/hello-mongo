@@ -1,0 +1,21 @@
+/* 这里设置css属性 */
+
+/* 通用选择器 权重 0 */
+* {
+    color: aqua;
+}
+
+/* 标签选择器 权重 1 */
+h1 {
+    color: orange;
+}
+
+/* 类别选择器 权重 10 */
+.demo a {
+    color: black;
+}
+
+/* ID 选择器 权重 100 */
+#demo a {
+    color: red;
+}

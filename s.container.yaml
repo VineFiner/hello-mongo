@@ -1,0 +1,34 @@
+extend: s.yaml
+services:
+  function-project: #  服务名称
+    component: fc  # 组件名称
+    actions:
+      pre-deploy: # 在deploy之前运行
+        - component: fc build --use-docker --dockerfile ./hello/Dockerfile --context ./hello
+           # - run: docker build xxx            # 要执行的系统命令，类似于一种钩子的形式
+           #   path: ./src                      # 执行系统命令/钩子的路径
+    props: #  组件的属性值
+      region: ${vars.region} # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
+      service: ${vars.service}
+      function:
+        name: "${vars.functionName}_container" # 函数名
+        description: 这是一个 vapor 案例
+        cAPort: 9000
+        timeout: 30
+        memorySize: 128
+        cpu: 0.1
+        diskSize: 512
+        instanceConcurrency: 5
+        runtime: custom-container
+        codeUri: ./
+        customContainerConfig:
+          image: ${env(imageurl)}
+      triggers:
+        - name: httpTrigger
+          type: http
+          config:
+            authType: anonymous
+            methods:
+              - GET
+              - POST
+# END
