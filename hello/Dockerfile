@@ -1,4 +1,4 @@
-FROM gcr.io/kaniko-project/executor:debug AS kaniko
+# FROM gcr.io/kaniko-project/executor:debug AS kaniko
 
 # ================================
 # Build image

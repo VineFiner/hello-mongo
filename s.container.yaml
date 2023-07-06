@@ -1,12 +1,12 @@
 extend: s.yaml
 
-vars: # 全局变量
-  region: "cn-hongkong" # 来自 publish.yaml Parameters 参数定义, 更多关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
-  service:
-    name: "hello-world-service"
-    description: 欢迎使用 ServerlessTool
-    role: 'acs:ram::${config(AccountID)}:role/AliyunFcDefaultRole'
-  functionName: "hello-mongo"
+# vars: # 全局变量
+#   region: "cn-hongkong" # 来自 publish.yaml Parameters 参数定义, 更多关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
+#   service:
+#     name: "hello-world-service"
+#     description: 欢迎使用 ServerlessTool
+#     role: 'acs:ram::${config(AccountID)}:role/AliyunFcDefaultRole'
+#   functionName: "hello-mongo"
   
 services:
   function-project: #  服务名称

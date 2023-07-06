@@ -46,37 +46,37 @@ services:
             methods:
               - GET
               - POST
-      # customDomains:
-      #   - domainName: auto
-      #     protocol: HTTP
-      #     routeConfigs:
-      #       - path: /*
-      #         methods:
-      #           - GET
-      #           - POST
-  # keep-warm: # 辅助函数, 2 min 定时预热
-  #   component: fc # 组件名称
-  #   # actions:
-  #   #   post-deploy:
-  #   #     - component: fc invoke --service-name ${function-project.output.service.name} --function-name nas-init
-  #   props: # 组件的属性值
-  #     region: ${vars.region}
-  #     service: ${vars.service}
-  #     function:
-  #       name: keep-warm
-  #       description: 'Serverless Devs Web Framework Helper Function'
-  #       codeUri: './.devsapp/keep-warm'
-  #       handler: index.handler
-  #       runtime: python3
-  #       timeout: 120
-  #       memorySize: 128
-  #       environmentVariables:
-  #         KEEP_WARM_URL: ${function-project.output.url.system_url}
-  #     triggers:
-  #       - name: timerTrigger
-  #         type: timer
-  #         config:
-  #           cronExpression: '@every 2m'
-  #           enable: false
+      customDomains:
+        - domainName: auto
+          protocol: HTTP
+          routeConfigs:
+            - path: /*
+              methods:
+                - GET
+                - POST
+  keep-warm: # 辅助函数, 2 min 定时预热
+    component: fc # 组件名称
+    # actions:
+    #   post-deploy:
+    #     - component: fc invoke --service-name ${function-project.output.service.name} --function-name nas-init
+    props: # 组件的属性值
+      region: ${vars.region}
+      service: ${vars.service}
+      function:
+        name: keep-warm
+        description: 'Serverless Devs Web Framework Helper Function'
+        codeUri: './.devsapp/keep-warm'
+        handler: index.handler
+        runtime: python3
+        timeout: 120
+        memorySize: 128
+        environmentVariables:
+          KEEP_WARM_URL: ${function-project.output.url.system_url}
+      triggers:
+        - name: timerTrigger
+          type: timer
+          config:
+            cronExpression: '@every 2m'
+            enable: false
 
 # END
